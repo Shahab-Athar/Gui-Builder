@@ -9,20 +9,31 @@ class Build:
         self.title = title
         self.geometry = size
 
-    def appbuild(self):
+    def create(self):
         root = self.root
         root.title(self.title)
         root.geometry(self.geometry)
 
-    def btn(self, text, position_x, position_y, **kwargs):
-        color = kwargs.get('color')
+    def label(self, position_x, position_y, **kwargs):
+        text = kwargs.get('text', '')
+        color = kwargs.get('color', 'black')
+        size = kwargs.get('size', '10')
+        textcolor = kwargs.get('text_color', 'black')
+        font = kwargs.get('font', 'Calibri')
+
+        label = Label(self.root, text = text, bd = size, fg = textcolor, font = font)
+        label.place(x=position_x, y=position_y)
+
+    def btn(self, position_x, position_y, **kwargs):
+        text = kwargs.get('text', '')
+        color = kwargs.get('color', 'black')
 
         btn=Button(self.root, text=text, fg=color)
         btn.place(x=position_x, y=position_y)
 
         self.btn_placed += 1
 
-    def appbuildend(self):
+    def show(self):
         self.root.mainloop()
 
     def get_status(self):
