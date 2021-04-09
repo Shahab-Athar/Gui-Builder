@@ -28,7 +28,9 @@ class Build:
         text = kwargs.get('text', '')
         color = kwargs.get('color', 'black')
 
-        btn=Button(self.root, text=text, fg=color)
+        command = kwargs.get('command', 'None')
+
+        btn=Button(self.root, text=text, fg=color, command=command)
         btn.place(x=position_x, y=position_y)
 
         self.btn_placed += 1
